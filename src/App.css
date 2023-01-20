@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.no-top-radius {
+  border-top-right-radius: 0!important;
+  border-top-left-radius: 0!important;
+}
