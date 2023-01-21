@@ -126,10 +126,10 @@ function SocialTab({selectedCompany}: { selectedCompany: Company | null }) {
 
     return (
         <Box>
-            <Box sx={{display: "flex", justifyContent: "space-around", alignItems: "center", mt: 3}}>
+            <Box sx={{display: "flex", justifyContent: "space-around", alignItems: "center", mt: 3,flexWrap:"wrap"}}>
                 {selectedCompany?.["LinkedIn - Followers"] ? (
                     <Button
-                        sx={{textTransform: "capitalize"}}
+                        sx={{textTransform: "capitalize",m:1}}
                         variant="outlined"
                         size={"small"}
                         startIcon={<LinkedIn/>}
@@ -139,7 +139,7 @@ function SocialTab({selectedCompany}: { selectedCompany: Company | null }) {
                 ) : null}
                 {selectedCompany?.["Twitter - Followers"] ? (
                     <Button
-                        sx={{textTransform: "capitalize"}}
+                        sx={{textTransform: "capitalize",m:1}}
                         variant="outlined"
                         color={"info"}
                         size={"small"}
@@ -150,7 +150,7 @@ function SocialTab({selectedCompany}: { selectedCompany: Company | null }) {
                 ) : null}
                 {selectedCompany?.["Instagram - Followers"] ? (
                     <Button
-                        sx={{textTransform: "capitalize"}}
+                        sx={{textTransform: "capitalize",m:1}}
                         variant="outlined"
                         color={"warning"}
                         size={"small"}
@@ -161,7 +161,7 @@ function SocialTab({selectedCompany}: { selectedCompany: Company | null }) {
                 ) : null}
                 {selectedCompany?.["Google Play - Reviews"] ? (
                     <Button
-                        sx={{textTransform: "capitalize"}}
+                        sx={{textTransform: "capitalize",m:1}}
                         variant="outlined"
                         color={"success"}
                         size={"small"}
@@ -172,7 +172,7 @@ function SocialTab({selectedCompany}: { selectedCompany: Company | null }) {
                 ) : null}
                 {selectedCompany?.["iTunes - Reviews"] ? (
                     <Button
-                        sx={{textTransform: "capitalize"}}
+                        sx={{textTransform: "capitalize",m:1}}
                         variant="outlined"
                         color={"primary"}
                         size={"small"}

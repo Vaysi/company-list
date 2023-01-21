@@ -32,7 +32,7 @@ function Details({ selectedCompany, setSelectedCompany }: Props) {
         centered
         value={tab}
         onChange={(e, newValue) => setTab(newValue)}
-        aria-label="icon label tabs example"
+        sx={{minHeight:72}}
       >
         <Tab icon={<Info />} label="General" value={"info"} sx={{ textTransform: "capitalize" }} />
         <Tab
