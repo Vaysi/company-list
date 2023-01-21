@@ -22,7 +22,7 @@ import ActionButton from "./actionButtons";
 function Item({ item, setSelectedCompany }: { item: Company; setSelectedCompany: any }) {
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} sx={{ my: 1 }}>
-      <Card sx={{ mx: 1, height: "100%" }}>
+      <Card sx={{ mx: 1, height: "100%",display:"flex",flexDirection:"column",justifyContent:"space-between" }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -68,20 +68,23 @@ function Item({ item, setSelectedCompany }: { item: Company; setSelectedCompany:
             <LocationOn sx={{ fontSize: 16, mr: 1 }} />
             {excerpt(item["HQ Location"], 35)}
           </Typography>
+          <Box sx={{textAlign:"center"}}>
+            <ActionButton item={item} />
+          </Box>
         </CardContent>
-        <CardActions disableSpacing sx={{ justifyContent: "center" }}>
-          <ActionButton item={item} />
+        <CardActions disableSpacing sx={{ justifyContent: "center",p:0 }}>
+          <Button
+              className={"no-top-radius"}
+              color={"primary"}
+              fullWidth={true}
+              sx={{ textTransform: "capitalize", display: "block", flex: 1 }}
+              variant={"contained"}
+              onClick={() => setSelectedCompany(item)}
+          >
+            More Details
+          </Button>
         </CardActions>
-        <Button
-          className={"no-top-radius"}
-          color={"primary"}
-          fullWidth={true}
-          sx={{ textTransform: "capitalize", display: "block", flex: 1 }}
-          variant={"contained"}
-          onClick={() => setSelectedCompany(item)}
-        >
-          More Details
-        </Button>
+
       </Card>
     </Grid>
   );

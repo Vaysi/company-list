@@ -37,6 +37,7 @@ export const options = {
       display: false,
     },
   },
+    maintainAspectRatio: true
 };
 
 const labels = ["Monthly", "2 Months", "3 Months", "4 Months", "5 Months", "6 Months"];
