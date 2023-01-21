@@ -43,7 +43,7 @@ function Item({ item, setSelectedCompany }: { item: Company; setSelectedCompany:
           sx={{ alignItem: "center" }}
         />
         <CardContent sx={{ py: 0 }}>
-          <Box sx={{ textAlign: "center" }}>
+          <Box sx={{ textAlign: "center",display:"flex" }}>
             <Chip
               size={"small"}
               icon={<Person />}
