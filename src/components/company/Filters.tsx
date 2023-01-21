@@ -1,7 +1,18 @@
-import {Autocomplete, FormControl, Grid, InputLabel, MenuItem, OutlinedInput, Select, TextField,} from "@mui/material";
+import {
+    Autocomplete,
+    Fab,
+    FormControl,
+    Grid,
+    InputLabel,
+    MenuItem,
+    OutlinedInput,
+    Select,
+    TextField,
+} from "@mui/material";
 import React, {useCallback, useEffect, useMemo, useState} from "react";
 
 import {Company} from "../../types";
+import {RestartAlt} from "@mui/icons-material";
 
 interface Props {
     data: Company[] | undefined;
@@ -38,6 +49,8 @@ function Filters({data, setFilteredData}: Props) {
 
     const [rankOperator, setRankOperator] = useState("=");
     const [rank, setRank] = useState("");
+
+    const showResetFilters = rank || employee || region.id !== 0 || industry.id !== 0;
 
     const filterByIndustry = useCallback(() => {
         setFilteredData(
@@ -95,6 +108,15 @@ function Filters({data, setFilteredData}: Props) {
         }
     }, [rank, rankOperator, data, setFilteredData]);
 
+    const resetFilters = () => {
+        setRank("");
+        setEmployee("");
+        setRegion(regionInitialState);
+        setIndustry(industryInitialState);
+        setRankOperator("=");
+        setEmployeeOperator("=");
+    }
+
     useEffect(() => {
         filterByIndustry();
     }, [filterByIndustry]);
@@ -110,6 +132,7 @@ function Filters({data, setFilteredData}: Props) {
     useEffect(() => {
         filterByRank();
     }, [filterByRank]);
+
 
     return (
         <Grid container sx={{px: 1}}>
@@ -144,7 +167,7 @@ function Filters({data, setFilteredData}: Props) {
                     />
                 </FormControl>
             </Grid>
-            <Grid item xs={12} sm={6} md={3} sx={{pr: {xs: 0, sm: 1}}}>
+            <Grid item xs={12} sm={6} md={3} sx={{pr: {xs: 0, sm: 0,md:1}}}>
                 <FormControl fullWidth={true} sx={{my: {xs: 1, sm: 1, md: 1, lg: 0}}}>
                     <InputLabel htmlFor="filled-adornment-password">Rank</InputLabel>
                     <OutlinedInput
@@ -189,7 +212,7 @@ function Filters({data, setFilteredData}: Props) {
                     }}
                 />
             </Grid>
-            <Grid item xs={12} sm={6} md={3} sx={{pr: {xs: 0, sm: 1}}}>
+            <Grid item xs={12} sm={6} md={3}>
                 <Autocomplete
                     placeholder={"HQ Region"}
                     options={regions}
@@ -205,6 +228,17 @@ function Filters({data, setFilteredData}: Props) {
                     }}
                 />
             </Grid>
+            {showResetFilters && (
+                <Fab variant="extended" size="small" color="warning" sx={{
+                    position: "fixed",
+                    right: "1rem",
+                    bottom: "1rem",
+                    textTransform: "captalize"
+                }} onClick={resetFilters}>
+                    <RestartAlt sx={{ mr: 1 }} />
+                    Reset Filters
+                </Fab>
+            )}
         </Grid>
     );
 }

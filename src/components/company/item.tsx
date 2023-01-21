@@ -68,11 +68,11 @@ function Item({ item, setSelectedCompany }: { item: Company; setSelectedCompany:
             <LocationOn sx={{ fontSize: 16, mr: 1 }} />
             {excerpt(item["HQ Location"], 35)}
           </Typography>
+        </CardContent>
+        <CardActions disableSpacing sx={{ justifyContent: "center",p:0,flexDirection:"column" }}>
           <Box sx={{textAlign:"center"}}>
             <ActionButton item={item} />
           </Box>
-        </CardContent>
-        <CardActions disableSpacing sx={{ justifyContent: "center",p:0 }}>
           <Button
               className={"no-top-radius"}
               color={"primary"}
